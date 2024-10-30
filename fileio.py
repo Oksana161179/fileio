@@ -3,6 +3,7 @@ from tkinter import filedialog as fd
 from tkinter import messagebox as mb
 from tkinter import ttk
 import requests#запросы к файлу, которые мы будем делать
+import pyperclip
 
 
 def upload():#создаем функцию загрузки файлов
@@ -20,6 +21,9 @@ def upload():#создаем функцию загрузки файлов
                 # перед тем как вставить ссылку, от начала и до конца
                 entry.insert(0, link)#выводим в поле ввода,
                 # с начальной позицией ноль и вставляем ссылку-link
+                pyperclip.copy(link)#отправляем ссылку-link в буфер обмена
+                mb.showinfo("Ссылка скопирована", f"Ссылка {link} успешно скопирована в буфер обмена")
+                #сообщаем об этом пользователю с помощью окна с сообщением и указываем конкретную ссылку-{link}
     except Exception as e:#обрабатываем исключения
         mb.showerror("Ошибка", f"Произошла ошибка: {e}")#создаем окно, которое оповестит об ошибке
 
